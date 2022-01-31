@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const createContact = createAsyncThunk("CONTACT_REQUEST", (data) => {
   return axios
-    .post("http://localhost:3000/contacts", {
+    .post(`http://${URL_BASE}/contacts`, {
       name: data.name,
       phone: data.phone,
       email: data.email,
@@ -14,7 +14,7 @@ export const createContact = createAsyncThunk("CONTACT_REQUEST", (data) => {
 
 export const getContacts = createAsyncThunk("ALLCONTACT_RESPONSE", () => {
   return axios
-    .get("http://localhost:3000/contacts")
+    .get(`http://${URL_BASE}/contacts`)
     .then((respuesta) => respuesta.data);
 });
 
