@@ -7,13 +7,15 @@ import {
 
 import App from '../App'
 import Home from '../screens/Home'
+import Contacts from "../screens/Contacts";
 
-export default () =>
+export default () => (
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />}>
         <Route index element={<Home />} />
-        {/* <Route path="teams" element={<Teams />}>
+        <Route path="contacts" element={<Contacts />} />
+          {/* <Route path="teams" element={<Teams />}>
           <Route path=":teamId" element={<Team />} />
           <Route path="new" element={<NewTeamForm />} />
           <Route index element={<LeagueStandings />} />
@@ -21,3 +23,4 @@ export default () =>
       </Route>
     </Routes>
   </BrowserRouter>
+);
