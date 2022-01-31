@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { createContact } from "../../app/state/contact";
+import { createContact } from "../app/state/contacts";
 
-export function Contacts() {
+ export default  ()=> {
   const dispatch = useDispatch();
 
   const [newContact, setNewContact] = useState({});

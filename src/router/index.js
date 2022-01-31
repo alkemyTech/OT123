@@ -14,13 +14,14 @@ export default () => (
     <Routes>
       <Route path="/" element={<App />}>
         <Route index element={<Home />} />
-        <Route path="contacts" element={<Contacts />} />
-          {/* <Route path="teams" element={<Teams />}>
+
+        {/* <Route path="teams" element={<Teams />}>
           <Route path=":teamId" element={<Team />} />
           <Route path="new" element={<NewTeamForm />} />
           <Route index element={<LeagueStandings />} />
         </Route> */}
       </Route>
+      <Route path="contacts" element={<Contacts />} />
     </Routes>
   </BrowserRouter>
 );
