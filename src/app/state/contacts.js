@@ -1,5 +1,6 @@
 import { createReducer, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+const URL_BASE = process.env.BASE_URL;
 
 export const createContact = createAsyncThunk("CONTACT_REQUEST", (data) => {
   return axios
