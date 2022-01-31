@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import counterReducer from '../features/counter/counterSlice';
-import contactReducer from "./state/contact";
+import contactReducer from "./state/contacts";
 
 import logger from "redux-logger";
 
