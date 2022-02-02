@@ -17,14 +17,17 @@ import {
     Input,
     Textarea,
     FormHelperText,
+    InputGroup,
+    InputLeftElement,
   } from '@chakra-ui/react';
   import {
     MdPhone,
     MdEmail,
     MdLocationOn,
     MdFacebook,
+    MdOutlineEmail,
   } from 'react-icons/md';
-  import {  BsInstagram } from 'react-icons/bs';
+  import {  BsInstagram, BsPerson } from 'react-icons/bs';
   import * as yup from "yup";
   import { useForm } from "react-hook-form";
   import { yupResolver } from "@hookform/resolvers/yup";
@@ -167,18 +170,31 @@ import {
                       <form onSubmit={handleSubmit(onSubmit, onError)}>
        
        
-        <FormControl>
-          <FormLabel htmlFor="name">Nombre</FormLabel>
-          <Input id="name" type="text" {...register("name")} />
+        <FormControl id="name">
+          <FormLabel htmlFor="name">Nombre *</FormLabel>
+          <InputGroup borderColor="#E0E1E7">
+                          <InputLeftElement
+                            pointerEvents="none"
+                            children={<BsPerson color="gray.800" />}
+                          />
+          <Input id="name" type="text" {...register("name")} size="md"/>
+                            </InputGroup>
           {errors && errors.name && (
             <FormHelperText color="red">
               {errors.name.message && errors.name.message}
             </FormHelperText>
           )}
         </FormControl>
-        <FormControl>
-          <FormLabel htmlFor="email">Email</FormLabel>
+    
+        <FormControl marginY={'5'} >
+          <FormLabel htmlFor="email">Email *</FormLabel>
+          <InputGroup borderColor="#E0E1E7">
+                          <InputLeftElement
+                            pointerEvents="none"
+                            children={<MdOutlineEmail color="gray.800" />}
+                          />
           <Input id="email" type="email" {...register("email")} />
+          </InputGroup>
           {errors && errors.email && (
             <FormHelperText color="red">
               {errors.email.message && errors.email.message}
@@ -186,7 +202,7 @@ import {
           )}
         </FormControl>
         <FormControl>
-          <FormLabel htmlFor="message">Mensaje</FormLabel>
+          <FormLabel htmlFor="message">Mensaje *</FormLabel>
           <Textarea id="message" type="text" {...register("message")} />
           {errors && errors.message && (
             <FormHelperText color="red">
@@ -195,7 +211,7 @@ import {
           )}
         </FormControl>
         
-        <Button type="submit"   bg="brand.yellow">
+        <Button type="submit"   bg="brand.yellow" marginY={'5'}>
           Enviar mensaje
         </Button>
       </form>
