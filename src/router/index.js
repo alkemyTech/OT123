@@ -6,7 +6,6 @@ import {
   Route,
 } from 'react-router-dom'
 
-import ContactPage from '../pages/ContactPage'
 import Home from '../pages/Home'
 import Layout from '../pages/Layout'
 
@@ -17,7 +16,7 @@ const AppRoutes = () => (
 
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
-        <Route path="contacto" element={<ContactPage />} />
+        {/* <Route path="contacto" element={<ContactPage />} /> Example */}
       </Route>
     </Routes>
   </Router>
