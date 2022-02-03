@@ -1,24 +1,26 @@
+/* eslint-disable import/no-cycle */
 import React from 'react'
 import {
-  BrowserRouter,
+  BrowserRouter as Router,
   Routes,
   Route,
 } from 'react-router-dom'
 
-import App from '../App'
+import ContactPage from '../pages/ContactPage'
 import Home from '../pages/Home'
+import Layout from '../pages/Layout'
 
-export default () => (
-  <BrowserRouter>
+const AppRoutes = () => (
+  <Router>
+
     <Routes>
-      <Route path="/" element={<App />}>
+
+      <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
-        {/* <Route path="teams" element={<Teams />}>
-          <Route path=":teamId" element={<Team />} />
-          <Route path="new" element={<NewTeamForm />} />
-          <Route index element={<LeagueStandings />} />
-        </Route> */}
+        <Route path="contacto" element={<ContactPage />} />
       </Route>
     </Routes>
-  </BrowserRouter>
+  </Router>
 )
+
+export default AppRoutes

@@ -2,16 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ChakraProvider } from '@chakra-ui/react'
-import Router from './router';
 import store from './app/store';
 import * as serviceWorker from './serviceWorker';
 import theme from './themes'
+import App from './App';
 
 ReactDOM.render(
   <ChakraProvider theme={theme}>
     <React.StrictMode>
       <Provider store={store}>
-        <Router />
+        <App />
       </Provider>
     </React.StrictMode>
   </ChakraProvider>,
