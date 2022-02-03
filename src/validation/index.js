@@ -6,3 +6,10 @@ const loginSchema = Yup.object().shape({
 })
 
 export default loginSchema
+
+export const contactSchema = Yup.object().shape({
+  name: Yup.string().required('El nombre es requerido'),
+  email: Yup.string().email().required('El email es requerido'),
+  message: Yup.string().required('El mensaje es requerido'),
+
+})
