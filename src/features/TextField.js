@@ -1,13 +1,8 @@
-// PROVISIONAL FIX, BEFORE MERGE SHOULD DELETE THESE
-/* eslint-disable react/prop-types */
 import React from 'react'
+import PropTypes from 'prop-types';
 
-import {
-  FormControl,
-  FormErrorMessage,
-  FormLabel,
-  Input,
-} from '@chakra-ui/react';
+import { FormControl, FormErrorMessage, FormLabel } from '@chakra-ui/form-control';
+import { Input } from '@chakra-ui/input';
 import { Field, useField } from 'formik';
 
 const TextField = ({ label, ...props }) => {
@@ -18,7 +13,11 @@ const TextField = ({ label, ...props }) => {
       <Field as={Input} {...field} {...props} />
       <FormErrorMessage>{meta.error}</FormErrorMessage>
     </FormControl>
-  );
-};
+  )
+}
 
-export default TextField;
+TextField.propTypes = {
+  label: PropTypes.string.isRequired,
+}
+
+export default TextField
