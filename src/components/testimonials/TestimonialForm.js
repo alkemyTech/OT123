@@ -13,7 +13,7 @@ import {
 } from '@chakra-ui/react'
 import { CKEditor } from '@ckeditor/ckeditor5-react'
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
-import TextField from '../../features/TextField'
+import TextField from '../TextField'
 
 const TestimonialForm = () => (
   <Formik
