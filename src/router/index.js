@@ -5,15 +5,15 @@ import {
   Route,
 } from 'react-router-dom'
 
-import App from '../App'
+// import App from '../App'
 // import Home from '../pages/Home'
 import CategoryForm from '../components/category/CategoryForm'
 
 const Index = () => (
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<App />}>
-        <Route index element={<CategoryForm />} />
+      <Route path="/" element={<CategoryForm />}>
+        {/* <Route index element={< />} /> */}
         {/* <Route path="teams" element={<Teams />}>
           <Route path=":teamId" element={<Team />} />
           <Route path="new" element={<NewTeamForm />} />

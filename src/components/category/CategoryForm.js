@@ -11,17 +11,12 @@ import {
   Input,
   Spacer,
   FormControl,
-  Image,
-  Box,
+  Textarea,
 } from '@chakra-ui/react'
-// eslint-disable-next-line import/no-unresolved
-import { CKEditor } from '@ckeditor/ckeditor5-react'
-// eslint-disable-next-line import/no-unresolved
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
 import { add, getTestimonial, update } from '../../services/TestimonialsService'
 import Alert from '../alert/Alert'
 
-const TestimonialForm = () => {
+const CategoryForm = () => {
   const { id } = useParams()
   const [testimonialData, setTestimonialData] = useState({
     id: null,
@@ -67,10 +62,6 @@ const TestimonialForm = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const ckChangeHandler = (event, editor) => {
-    const editedData = editor.getData()
-    setTestimonialData((data) => ({ ...data, content: editedData }))
-  }
   const updateChangeHandler = async (values) => {
     const updatedTestimonial = await update(id, {
       name: values.name,
@@ -153,9 +144,9 @@ const TestimonialForm = () => {
               display="block"
               onSubmit={handleSubmit}
             >
-              <Heading align="center">Testimonio</Heading>
+              <Heading align="center">Categoría</Heading>
               <FormControl>
-                <FormLabel paddingLeft="2">Titulo</FormLabel>
+                <FormLabel paddingLeft="2">Nombre</FormLabel>
                 <Input
                   type="text"
                   id="name"
@@ -166,32 +157,14 @@ const TestimonialForm = () => {
               </FormControl>
               <Spacer />
               <FormControl>
-                <FormLabel paddingLeft="2">Contenido</FormLabel>
-                <CKEditor
-                  name="content"
-                  data={values.content}
-                  editor={ClassicEditor}
-                  onChange={ckChangeHandler}
+                <FormLabel paddingLeft="2">Descripción</FormLabel>
+                <Textarea
+                  type="text"
+                  id="description"
+                  name="description"
+                  value={values.description}
+                  onChange={handleChange}
                 />
-              </FormControl>
-              <FormLabel paddingLeft="2">Imagen</FormLabel>
-              <FormControl
-                display="flex"
-                flexWrap="wrap"
-                justifyContent="center"
-              >
-                <Box paddingBottom="2" align="center">
-                  <Input
-                    width="230px"
-                    border-radius="5px"
-                    padding="4px 5px"
-                    cursor="pointer"
-                    type="file"
-                  />
-                </Box>
-                <Box paddingLeft="4" paddingRight="4">
-                  <Image objectFit="cover" src={testimonialData.image} />
-                </Box>
               </FormControl>
               <Button type="submit" w="100%">
                 Guardar
@@ -205,4 +178,4 @@ const TestimonialForm = () => {
   )
 }
 
-export default TestimonialForm
+export default CategoryForm
