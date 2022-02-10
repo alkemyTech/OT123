@@ -13,17 +13,12 @@ import {
   FormControl,
   Textarea,
 } from '@chakra-ui/react'
-import { add, getTestimonial, update } from '../../services/TestimonialsService'
+import { add, getOne, update } from '../../services/CategoriesService'
 import Alert from '../alert/Alert'
 
 const CategoryForm = () => {
   const { id } = useParams()
-  const [testimonialData, setTestimonialData] = useState({
-    id: null,
-    name: '',
-    image:
-            'https://nypost.com/wp-content/uploads/sites/2/2021/12/nature_14.jpg?quality=80&strip=all&w=744',
-    content: '',
+  const [categoryData, setCategoryData] = useState({
   })
   const [ready, setReady] = useState(false)
   const [alerts, setAlerts] = useState({
@@ -33,16 +28,14 @@ const CategoryForm = () => {
     icon: '',
     onConfirm: () => { },
   })
-  const loadTestimonialData = async () => {
+  const loadCategoryData = async () => {
     if (id) {
       try {
-        const loadedTestimonialData = await getTestimonial(id)
-        setTestimonialData({
-          id: loadedTestimonialData.data.result.id,
-          name: loadedTestimonialData.data.result.name,
-          image:
-                        'https://nypost.com/wp-content/uploads/sites/2/2021/12/nature_14.jpg?quality=80&strip=all&w=744',
-          content: loadedTestimonialData.data.result.content,
+        const loadedCategoryData = await getOne(id)
+        setCategoryData({
+          id: loadedCategoryData.data.result.id,
+          name: loadedCategoryData.data.result.name,
+          description: loadedCategoryData.data.result.description,
         })
         setReady(true)
       } catch (error) {
@@ -58,21 +51,21 @@ const CategoryForm = () => {
     }
   }
   useEffect(() => {
-    loadTestimonialData()
+    loadCategoryData()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const updateChangeHandler = async (values) => {
-    const updatedTestimonial = await update(id, {
+    const updatedCategory = await update(id, {
       name: values.name,
-      content: testimonialData.content,
-      image: testimonialData.image,
+      content: categoryData.content,
+      image: categoryData.image,
     })
-    if (updatedTestimonial) {
+    if (updatedCategory) {
       const successAlert = {
         show: true,
-        title: 'Testimonio',
-        message: 'El testimonio se ha actualizado!',
+        title: 'Categoria',
+        message: 'La categoría se ha actualizado!',
         icon: 'success',
         onConfirm: () => { },
       }
@@ -82,16 +75,15 @@ const CategoryForm = () => {
 
   const AddSubmitHandler = async (values) => {
     try {
-      const newTestimonial = await add({
+      const newCategory = await add({
         name: values.name,
-        content: testimonialData.content,
-        image: values.image,
+        description: values.content,
       })
-      if (newTestimonial) {
+      if (newCategory) {
         const successAlert = {
           show: true,
-          title: 'Testimonio',
-          message: 'Testimonio agregado!',
+          title: 'Categoria',
+          message: 'Categoria agregada!',
           icon: 'success',
           onConfirm: () => { },
         }
@@ -114,7 +106,7 @@ const CategoryForm = () => {
       <Alert {...alerts} />
       {((id && ready) || !id) && (
       <Formik
-        initialValues={testimonialData}
+        initialValues={categoryData}
         validationSchema={Yup.object({
           name: Yup.string()
             .required('Nombre requerido!')
