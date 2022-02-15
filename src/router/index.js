@@ -15,6 +15,8 @@ import SignUp from '../pages/signup/SignUpForm'
 import Home from '../pages/Home'
 import AP from '../components/AnimatedPage'
 import TestimonialForm from '../components/testimonials/TestimonialForm'
+import Activities from '../components/activities/Activities'
+import Activity from '../components/activities/Activity'
 
 const AllRoutes = () => {
   const location = useLocation()
@@ -28,6 +30,8 @@ const AllRoutes = () => {
         <Route path="/testimonialform" element={<AP><TestimonialForm /></AP>} />
         <Route path="novedades" element={<News />} />
         <Route path="novedades/:id" element={<Entry />} />
+        <Route path="actividades" element={<Activities />} />
+        <Route path="actividades/:id" element={<Activity />} />
         <Route path="/app" element={<App />} />
       </Routes>
     </AnimatePresence>
