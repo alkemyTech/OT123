@@ -56,18 +56,19 @@ const ContactForm = () => {
         }}
       >
         {(formik) => (
-          <HStack display="flex" backgroundColor="brand.lightBlue">
+          <HStack display="flex">
             <VStack
               as="form"
               m="auto"
-              p="2"
+              p="4"
               w={{ base: 300, md: 500, sm: 400 }}
               h="auto"
               justifyContent="center"
               borderWidth="1px solid white"
               borderRadius="lg"
               boxShadow="lg"
-              backgroundColor="white"
+              border="2px solid black"
+              backgroundColor="#ffffcc"
               onSubmit={formik.handleSubmit}
               display="block"
             >
@@ -77,6 +78,7 @@ const ContactForm = () => {
               <TextField name="message" placeholder="Mensaje" type="textarea" label="Mensaje" />
               <Button type="submit" w="100%" backgroundColor="brand.yellow" color="gray.500">
                 Enviar mensaje
+
               </Button>
             </VStack>
           </HStack>
