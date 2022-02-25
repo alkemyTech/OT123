@@ -76,7 +76,7 @@ const ContactForm = () => {
               <TextField name="email" placeholder="E-mail" type="email" label="Email" />
               <TextField name="message" placeholder="Mensaje" type="textarea" label="Mensaje" />
               <Button type="submit" w="100%" backgroundColor="brand.yellow" color="gray.500">
-                Crear cuenta
+                Enviar mensaje
               </Button>
             </VStack>
           </HStack>
