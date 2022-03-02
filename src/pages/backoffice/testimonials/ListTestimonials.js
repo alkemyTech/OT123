@@ -198,17 +198,6 @@ export default function ListTestimonials() {
           personas confian en nosotros!
         </chakra.h2>
       </Box>
-      <SimpleGrid
-        columns={{ base: 1, xl: 2 }}
-        spacing="20"
-        mt={16}
-        mx="auto"
-      >
-        {allTestimonials
-        && allTestimonials?.map((cardInfo, index) => (
-          <TestmonialCard {...cardInfo} index={index} key={cardInfo.id} />
-        ))}
-      </SimpleGrid>
       { isLoggedIn
       && (
       <Center>
@@ -247,6 +236,18 @@ export default function ListTestimonials() {
         </FormControl>
       </Center>
       )}
+      <SimpleGrid
+        columns={{ base: 1, xl: 2 }}
+        spacing="20"
+        mt={16}
+        mx="auto"
+      >
+        {allTestimonials
+        && allTestimonials?.map((cardInfo, index) => (
+          <TestmonialCard {...cardInfo} index={index} key={cardInfo.id} />
+        ))}
+      </SimpleGrid>
+
       <Box paddingBottom="4">
         <Icon viewBox="0 0 40 35" mt={14} boxSize={10} color="#2DCC0A">
           <path
