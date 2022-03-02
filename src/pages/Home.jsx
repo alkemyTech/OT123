@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import {
-  Text, SimpleGrid, Grid, Box,
+  Text, SimpleGrid, Grid, Box, Center,
 } from '@chakra-ui/react'
+import { Link } from 'react-router-dom'
 import { getAllSliders } from '../services/slidersService'
 import { getAllTestimonials } from '../services/testimonialsService'
 import { getOrganizationById } from '../services/organizationsService'
@@ -32,7 +33,7 @@ const Home = () => {
     loadData();
   }, [])
   return (
-    <Box>
+    <Box my={20}>
       <Slider sliderData={sliderData} />
       <Text textAlign="center" fontSize="3xl" my={5}>{organizationData.welcomeText}</Text>
 
@@ -43,6 +44,9 @@ const Home = () => {
           array={newsData}
         />
       </Grid>
+      <Center>
+        <Link to="/novedades">Ver mas novedades</Link>
+      </Center>
       <Title title="TESTIMONIOS" fontSize={25} />
       <SimpleGrid
         display="flex"
@@ -59,6 +63,10 @@ const Home = () => {
           <TestmonialCard {...cardInfo} index={index} key={cardInfo.id} />
         ))}
       </SimpleGrid>
+      <Center>
+        <Link to="/testimonios">Ver mas testimonios</Link>
+      </Center>
+
     </Box>
   )
 }

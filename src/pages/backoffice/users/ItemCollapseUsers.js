@@ -11,8 +11,6 @@ import PropTypes from 'prop-types'
 import { deleteUser } from '../../../services/usersService'
 
 const ItemCollapseUsers = ({ item, setAlertProps, setDeletedUser }) => {
-  // eslint-disable-next-line no-console
-  console.log(item);
   const navigate = useNavigate()
   const { isOpen, onToggle } = useDisclosure()
   const [openCollapse, setopenCollapse] = useState(false)
